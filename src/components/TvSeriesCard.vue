@@ -37,10 +37,10 @@ const previousPage = () => {
 .container {
   background-color: rgb(27, 26, 26);
   padding: 30px;
+}
 
-  .cards {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
+.cards {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 </style>
