@@ -34,7 +34,7 @@ const previousPage = () => {
 
 <template>
   <div class="container">
-    <div class="cards">
+    <div v-if="characters" class="cards">
       <Card
         v-for="character in characters"
         :key="character.id"
@@ -43,6 +43,9 @@ const previousPage = () => {
       >
         <p>{{ character.location.name }}</p>
       </Card>
+    </div>
+    <div v-else class="cards spinner">
+      <NSpin size="large" />
     </div>
     <div class="button-container">
       <button @click="previousPage" :disabled="page === 1">&lt;</button>
@@ -55,11 +58,25 @@ const previousPage = () => {
 .container {
   background-color: rgb(27, 26, 26);
   padding: 30px;
+  margin-top: 100px;
 }
 
 .cards {
   max-width: 1000px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards h3 {
+  font-weight: bold;
+}
+
+.cards p {
+  font-size: 10px;
+}
+
+.jobs {
   display: flex;
   flex-wrap: wrap;
 }
@@ -77,5 +94,11 @@ const previousPage = () => {
   border-radius: 100%;
   margin: 0 5px;
   cursor: pointer;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
