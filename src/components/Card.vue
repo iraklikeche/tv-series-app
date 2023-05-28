@@ -6,7 +6,7 @@ const { image, name, species } = defineProps(["image", "name", "species"]);
 
 <template>
   <div>
-    <NCard>
+    <NCard class="card">
       <template #cover>
         <img :src="image" />
       </template>
@@ -24,5 +24,9 @@ const { image, name, species } = defineProps(["image", "name", "species"]);
 
 .n-card img {
   height: 250px;
+}
+
+.card {
+  height: 350px;
 }
 </style>

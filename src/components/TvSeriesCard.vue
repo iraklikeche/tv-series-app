@@ -5,9 +5,13 @@ import Card from "./Card.vue";
 
 const characters = ref(null);
 const page = ref(1);
+const pages = ref(null);
 
 const response = await axios.get("https://rickandmortyapi.com/api/character");
 characters.value = response.data.results;
+pages.value = response.data.info.pages;
+
+console.log(pages.value);
 
 watch(page, async () => {
   const res = await axios.get(
@@ -39,6 +43,10 @@ const previousPage = () => {
         :species="character.species"
       />
     </div>
+    <div class="button-container">
+      <button @click="previousPage" :disabled="page === 1">&lt;</button>
+      <button @click="nextPage" :disabled="page === pages">></button>
+    </div>
   </div>
 </template>
 
@@ -53,5 +61,20 @@ const previousPage = () => {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.button-container button {
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin: 0 5px;
+  cursor: pointer;
 }
 </style>
