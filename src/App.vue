@@ -1,5 +1,6 @@
 <script setup>
-import TvSeriesCard from "./components/TvSeriesCard.vue";
+import RickAndMortyCard from "./components/RickAndMortyCard.vue";
+import GOTCard from "./components/GOTCard.vue";
 </script>
 
 <template>
@@ -7,7 +8,7 @@ import TvSeriesCard from "./components/TvSeriesCard.vue";
     <h1>HERO</h1>
     <Suspense>
       <template #default>
-        <TvSeriesCard />
+        <RickAndMortyCard />
       </template>
       <template #fallback>
         <div>
@@ -15,6 +16,7 @@ import TvSeriesCard from "./components/TvSeriesCard.vue";
         </div>
       </template>
     </Suspense>
+    <GOTCard />
   </main>
 </template>
 
