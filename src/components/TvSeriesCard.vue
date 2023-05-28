@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import axios from "axios";
+import Card from "./Card.vue";
 
 const characters = ref(null);
 const page = ref(1);
@@ -29,7 +30,15 @@ const previousPage = () => {
 
 <template>
   <div class="container">
-    <div class="cards"></div>
+    <div class="cards">
+      <Card
+        v-for="character in characters"
+        :key="character.id"
+        :image="character.image"
+        :name="character.name"
+        :species="character.species"
+      />
+    </div>
   </div>
 </template>
 
@@ -42,5 +51,7 @@ const previousPage = () => {
 .cards {
   max-width: 1000px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
