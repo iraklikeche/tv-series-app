@@ -1,12 +1,19 @@
 <script setup>
 import RickAndMortyCard from "./components/RickAndMortyCard.vue";
 import GOTCard from "./components/GOTCard.vue";
+import Hero from "./components/Hero.vue";
+import { ref } from "vue";
+
+const isRickAndMorty = ref(true);
 </script>
 
 <template>
   <main>
-    <h1>HERO</h1>
-    <Suspense>
+    <Hero
+      :isRickAndMorty="isRickAndMorty"
+      @changeMovie="isRickAndMorty = !isRickAndMorty"
+    />
+    <Suspense v-if="isRickAndMorty">
       <template #default>
         <RickAndMortyCard />
       </template>
@@ -16,7 +23,7 @@ import GOTCard from "./components/GOTCard.vue";
         </div>
       </template>
     </Suspense>
-    <GOTCard />
+    <GOTCard v-else />
   </main>
 </template>
 

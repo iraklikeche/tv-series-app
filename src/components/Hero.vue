@@ -1,7 +1,21 @@
+<script setup>
+import { defineProps, defineEmits } from "vue";
+
+const { isRickAndMorty } = defineProps(["isRickAndMorty"]);
+
+const emit = defineEmits(["changeMovie"]);
+
+const emitChangeMovie = () => {
+  emit("changeMovie");
+};
+</script>
+
 <template>
-  <div class="her">
-    <h1>Rick and Morty</h1>
-    <p>Game of Thrones</p>
+  <div class="hero">
+    <h1>{{ isRickAndMorty ? "Rick and Morty" : "Game of Thrones " }}</h1>
+    <p @click="emitChangeMovie">
+      {{ isRickAndMorty ? "Game of Thrones" : "Rick and Morty " }}
+    </p>
   </div>
 </template>
 
@@ -22,7 +36,11 @@
 }
 
 .hero h1 {
-  font-size: 100px;
+  font-size: 80px;
   font-weight: bold;
+}
+
+.hero p {
+  cursor: pointer;
 }
 </style>
