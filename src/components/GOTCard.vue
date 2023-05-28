@@ -31,13 +31,14 @@ onMounted(async () => {
 <template>
   <div class="container">
     <div class="cards">
-      <!-- <Card
+      <Card
         v-for="character in characters"
         :key="character.id"
-        :image="character.image"
-        :name="character.name"
-        :species="character.species"
-      /> -->
+        :image="character.imageUrl"
+        :name="character.fullName"
+      >
+        <p>{{ character.title }}</p>
+      </Card>
     </div>
     <div class="button-container"></div>
   </div>

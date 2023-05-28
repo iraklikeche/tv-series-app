@@ -40,8 +40,9 @@ const previousPage = () => {
         :key="character.id"
         :image="character.image"
         :name="character.name"
-        :species="character.species"
-      />
+      >
+        <p>{{ character.location.name }}</p>
+      </Card>
     </div>
     <div class="button-container">
       <button @click="previousPage" :disabled="page === 1">&lt;</button>
