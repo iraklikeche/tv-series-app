@@ -13,7 +13,9 @@ const isRickAndMorty = ref(true);
       :isRickAndMorty="isRickAndMorty"
       @changeMovie="isRickAndMorty = !isRickAndMorty"
     />
-    <RickAndMortyCard v-if="isRickAndMorty" />
-    <GOTCard v-else />
+
+    <KeepAlive>
+      <Component :is="isRickAndMorty ? RickAndMortyCard : GOTCard" />
+    </KeepAlive>
   </main>
 </template>
